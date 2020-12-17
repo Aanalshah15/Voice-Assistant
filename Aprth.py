@@ -80,11 +80,7 @@
     + Zulu zu
 
 """
-# https://www.lfd.uci.edu/~gohlke/pythonlibs/
-# "start \"\" https://www.{0}.com/search?q={1}&source=lnms&tbm=nws"
-# os.system('start \"\" https://www.'+a[0]+'.com/')
-# https://codescracker.com/python/program/python-program-shutdown-restart-computer.htm
-# https://cloud.google.com/speech-to-text/docs/languages
+
 
 import pyttsx3
 import os
@@ -112,26 +108,7 @@ def WishMe():
         speak("Good Evening, Sir")
     speak("Hi Sir, I'm Aprth, How can I help you?")
 
-"""def message(text):
-    text = takecommand(
-        if text in ['hello','hi','gm','good morning']:
-            return speak(response[text][random.randint(0,len(response[text]))])
-        else:
-            return speak(response[text])
-    else:
-        return speak(response["default"])
 
-def bot():
-    x = True
-    while x:
-        # text = input("USER: ").lower()
-        if text in ['goodbye','bye','ta..ta..','bye bye','good bye','tata']:
-            x = False
-            return 'Bot: Good Bye!'
-        else:
-            x = True
-            print("Bot: ",message(text))
-"""
 def takecommand():
     #take commmad from microphones and returns string
     r = sr.Recognizer()
@@ -156,8 +133,8 @@ def sendEmail(to, content):
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.ehlo()
     server.starttls()
-    server.login('patelparth20005@gmail.com','Parth2000')
-    server.sendmail('patelparth20005@gmail.com',to,content)
+    server.login('YOUR_EMAIL','YOUR_PASSWORD')
+    server.sendmail('YOUR_EMAIL',to,content)
     server.close()
 
 if __name__ == '__main__':
@@ -192,7 +169,6 @@ if __name__ == '__main__':
         if 'open' in query:
             query = query.replace('open ','')
             webbrowser.open(query+".com")
-            # os.system('start \"\" https://www.' + query + '.com/')
 
         if 'search google' in query:
             query = query.replace('search google ','')
@@ -205,8 +181,7 @@ if __name__ == '__main__':
         if 'youtube' in query:
             query = query.replace('youtube ','')
             os.system(f"start \"\" https://www.youtube.com/results?search_query={query}")
-        #     https://www.youtube.com/results?search_query=
-
+        
         if 'say about' in query:
             query = query.replace('say about ','')
             webbrowser.open(query+".com")
@@ -230,16 +205,16 @@ if __name__ == '__main__':
             print(strtime)
             speak(f"Sir, The Time is {strtime}")
 
-        if 'show me powerpoint' in query:
+        if 'open powerpoint' in query:
             path = "C:\\Program Files\\Microsoft Office\\root\\Office16\\POWERPNT.EXE"
             os.startfile(path)
 
-        if 'show me firefox' in query:
+        if 'open firefox' in query:
             path = "C:\\Program Files\\Mozilla Firefox\\firefox.exe"
             os.startfile(path)
 
-        if 'show me movie' in query:
-            path = "C:\\movies\\the secret 2006 hindi dubbed [720p].mp4"
+        if 'start movie' in query:
+            path = "PATH_OF_YOUR_MOVIE"
             os.startfile(path)
 
         # less secured app : ON (should be OFF )
@@ -248,22 +223,8 @@ if __name__ == '__main__':
                 speak("Which Message sir...")
                 print("Which Message,sir ?")
                 content = takecommand()
-                to = 'patelaprth20005@gmail.com'
-                to1 = 'aanalshah2001@gmail.com'
-                to2 = 'jayjain33633434@gmail.com'
-                to3 = 'dakshay4307@gmail.com'
-                to4 = 'kalindiAdhiya241@gmail.com'
-                to5 = 'yashpatel200021@gmail.com'
-                to6 = 'parin.patel2003@gmail.com'
-                to7 = 'merakesh1974@gmail.com'
-                sendEmail(to, f'Aprth; {content}')
-                # sendEmail(to1,f'Aanal; {content}')
-                # sendEmail(to2,f'Jay; {content}')
-                # sendEmail(to3,f'Dakshay; {content}')
-                # sendEmail(to4,f'Kalindi; {content}')
-                # sendEmail(to5,f'Yash; {content}')
-                # sendEmail(to6,f'Parin; {content}')
-                # sendEmail(to7,f'Papa; {content}')
+                to = '\\RECEIVER_EMAIL\\'
+                sendEmail(to, f'\\RECEIVER_NAME\\; {content}')
                 speak("Email has been sent!")
 
             except Exception as e:
